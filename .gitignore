@@ -1,0 +1,27 @@
+# Visual Studio cache
+.vs/
+*.user
+*.suo
+
+# Build output folders (for ALL subprojects)
+x64/
+Debug/
+Release/
+bin/
+obj/
+
+# Intermediate files
+*.obj
+*.pch
+*.pdb
+*.idb
+*.ilk
+*.tlog
+
+# Backup
+*.bak
+
+# Visual Studio databases
+*.VC.db
+*.opendb
+ipch/
