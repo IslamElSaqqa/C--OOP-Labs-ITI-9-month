@@ -2,7 +2,7 @@
 .vs/
 *.user
 *.suo
-
+Rectangle_Example_Composition/.vs/
 # Build output folders (for ALL subprojects)
 x64/
 Debug/
