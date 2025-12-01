@@ -3,6 +3,47 @@
 #include <cstring>
 using namespace std;
 
+void writeAndReadBinaryInteger() {
+    int number;
+    cout << "Enter an integer to write to a binary file: ";
+    cin >> number;
+
+    // Write integer to binary file
+    ofstream OutputBinary("integerFile.bin", ios::out | ios::binary);
+    
+    if (!OutputBinary) {
+        cout << "Error opening binary file for writing" << endl;
+        return;
+    }
+
+    // treats the memory of the integer as a sequence of bytes.
+    OutputBinary.write((char*)&number, sizeof(number));
+    OutputBinary.close();
+    cout << "Done writing integer to integerFile.bin" << endl;
+
+    // Read integer back from binary file
+    ifstream InputBinary("integerFile.bin", ios::in | ios::binary);
+    
+    if (!InputBinary) {
+        cout << "Cannot open binary file for reading" << endl;
+        return;
+    }
+    
+    int readNumber;
+    InputBinary.read((char*)(&readNumber), sizeof(readNumber));
+
+    if (InputBinary.gcount() != sizeof(readNumber)) {
+        cout << "Error reading integer from file!" << endl;
+        InputBinary.close();
+        return;
+    }
+
+    InputBinary.close();
+
+    cout << "Read integer from binary file: " << readNumber << endl;
+}
+
+
 int main() {
 
     // defining an fixed array of characters.
@@ -69,6 +110,8 @@ int main() {
         cout << "Read from Binary file: " << readBinary << endl;
         cout << "Closing the stream!" << endl;
     }
+
+    writeAndReadBinaryInteger();
 
     return 0;
 }
